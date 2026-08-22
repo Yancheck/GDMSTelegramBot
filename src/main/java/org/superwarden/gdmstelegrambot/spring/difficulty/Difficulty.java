@@ -1,10 +1,22 @@
 package org.superwarden.gdmstelegrambot.spring.difficulty;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+
 import java.io.IOException;
 
+@Embeddable
 public class Difficulty {
-    private final DifficultyType difficultyType;
-    private final int topPlacement;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "difficulty_type")
+    private DifficultyType difficultyType;
+
+    @Column(name = "top_placement")
+    private int topPlacement;
+
+    public Difficulty() {}
 
     public Difficulty(DifficultyType difficultyType) {
         if (difficultyType.equals(DifficultyType.EXTREME_DEMON) || difficultyType.equals(DifficultyType.CHALLENGE) || difficultyType.equals(DifficultyType.SHITTY)) {
@@ -47,5 +59,13 @@ public class Difficulty {
                 return true;
             }
         }
+    }
+
+    public DifficultyType getDifficultyType() {
+        return difficultyType;
+    }
+
+    public int getTopPlacement() {
+        return topPlacement;
     }
 }

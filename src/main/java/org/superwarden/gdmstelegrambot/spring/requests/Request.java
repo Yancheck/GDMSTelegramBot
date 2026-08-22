@@ -1,4 +1,4 @@
-package org.superwarden.gdmstelegrambot.spring;
+package org.superwarden.gdmstelegrambot.spring.requests;
 
 import org.superwarden.gdmstelegrambot.spring.difficulty.Difficulty;
 
@@ -8,6 +8,7 @@ public record Request(
         Difficulty difficulty,
         String comment,
         String proofLink,
+        Device device,
         Integer enjoyment
 ) {
 }

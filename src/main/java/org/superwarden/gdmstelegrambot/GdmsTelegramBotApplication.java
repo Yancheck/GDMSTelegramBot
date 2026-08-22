@@ -9,6 +9,6 @@ import org.superwarden.gdmstelegrambot.spring.difficulty.DifficultyType;
 public class GdmsTelegramBotApplication {
     public static void main(String[] args) {
         SpringApplication.run(GdmsTelegramBotApplication.class, args);
-        Difficulty difficulty = new Difficulty(DifficultyType.EXTREME_DEMON, 400);
+//        Difficulty difficulty = new Difficulty(DifficultyType.EXTREME_DEMON, 400);
     }
 }
