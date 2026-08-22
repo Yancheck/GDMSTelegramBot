@@ -1,5 +1,7 @@
 package org.superwarden.gdmstelegrambot.spring.difficulty;
 
+import java.io.IOException;
+
 public class Difficulty {
     private final DifficultyType difficultyType;
     private final int topPlacement;
@@ -18,20 +20,24 @@ public class Difficulty {
             throw new IllegalStateException("This type of difficulty cannot have top placement");
         }
 
-        if (!isTopCorrect(difficultyType, topPlacement)) {
-            throw new IllegalStateException("Top placement is incorrect");
+        try {
+            if (!isTopCorrect(difficultyType, topPlacement)) {
+                throw new IllegalStateException("Top placement is incorrect");
+            }
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
         }
         this.difficultyType = difficultyType;
         this.topPlacement = topPlacement;
     }
 
-    private boolean isTopCorrect(DifficultyType difficultyType, int topPlacement) {
+    private boolean isTopCorrect(DifficultyType difficultyType, int topPlacement) throws IOException, InterruptedException {
         if (topPlacement < 1)
             return false;
 
         switch (difficultyType) {
             case EXTREME_DEMON -> {
-                return topPlacement <= AredlManager.getExtremeCount();
+                return topPlacement <= GdLvlsManager.getDemonListLvlCount();
             }
             case SHITTY, CHALLENGE -> {
                 return topPlacement <= 200;
