@@ -17,6 +17,8 @@ public class GdLvlsManager {
                 .GET()
                 .build();
 
+        System.out.println("Getting response");
+
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
         ObjectMapper mapper = new ObjectMapper();

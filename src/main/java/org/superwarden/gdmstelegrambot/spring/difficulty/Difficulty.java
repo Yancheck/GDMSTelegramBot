@@ -25,7 +25,7 @@ public class Difficulty {
                 throw new IllegalStateException("Top placement is incorrect");
             }
         } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         this.difficultyType = difficultyType;
         this.topPlacement = topPlacement;
