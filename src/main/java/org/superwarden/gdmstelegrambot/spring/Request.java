@@ -3,8 +3,11 @@ package org.superwarden.gdmstelegrambot.spring;
 import org.superwarden.gdmstelegrambot.spring.difficulty.Difficulty;
 
 public record Request(
-        Long username,
+        Long chatId,
         String levelName,
-        Difficulty difficulty
+        Difficulty difficulty,
+        String comment,
+        String proofLink,
+        Integer enjoyment
 ) {
 }
